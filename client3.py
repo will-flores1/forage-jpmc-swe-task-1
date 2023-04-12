@@ -43,13 +43,16 @@ def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
     if (price_b == 0):
-        return
+        return None
     ratio = price_a / price_b
+    if (ratio < 0):
+        return None
     return ratio
 
 
 # Main
 if __name__ == "__main__":
+    print(getRatio(4, 0))
     # Query the price once every N seconds.
     for _ in iter(range(N)):
         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
